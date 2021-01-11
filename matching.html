@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript">
+  function MakeMatchTable() {
+
+    //初期処理
+    document.getElementById("result").style.display = "block";
+    //コートの列の全表示
+    for (let coat_counter=1; coat_counter<=4; coat_counter++) {
+      document.getElementById("coat_"+coat_counter).style.display ="table-cell";
+    }
+
+    //試合数の行の全表示
+    for (let match_counter=1; match_counter<=20; match_counter++) {
+      document.getElementById("match_"+match_counter).style.display ="table-row";
+      for (let coat_counter=1; coat_counter<=4; coat_counter++) {
+        document.getElementById("match_"+match_counter+"_coat_"+coat_counter).style.display="table-cell";
+      }
+    }
+
+
+    //メイン処理
+    //メイン処理
+
+
+
+    //結果出力と非表示項目の整形
+    //指定コート数以上の列の非表示
+    for (let coat_counter=parseInt(document.getElementById("coat_number").value)+1; coat_counter<=4; coat_counter++) {
+      document.getElementById("coat_"+coat_counter).style.display ="none";
+    }
+
+    //指定試合数以上の行の非表示
+    for (let match_counter=1; match_counter<=20; match_counter++) {
+      if(document.getElementById("match_number").value<match_counter){
+        document.getElementById("match_"+match_counter).style.display ="none";
+      }else{
+        for (let coat_counter=1; coat_counter<=4; coat_counter++) {
+          if(coat_counter<=parseInt(document.getElementById("coat_number").value)){
+            document.getElementById("match_"+match_counter+"_coat_"+coat_counter).innerHTML="match_"+match_counter+"_coat_"+coat_counter;
+          }else{
+            document.getElementById("match_"+match_counter+"_coat_"+coat_counter).style.display="none";
+          }
+        }
+      }
+    }
+  }
+</script>
+<html>
+  <head>
+    <link rel=”stylesheet”href=”style.css”>
+    <meta charset="UTF-8">
+      <title>マッチング作成</title>
+    </meta>
+  </head>
+
+  <body>
+    <div id="main_menu">
+      <h1>マッチング作成</h1>
+      <div id = "setting">
+        <a>コート数：</a>
+        <select id="coat_number">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        </select>
+
+        <a>試合数：</a>
+        <select id="match_number">
+        <option value="5"> 5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        </select>
+      </div>
+      <div id = "player_01">
+        <a>プレイヤー　１：</a>
+        <input type="text" id="player_name_01" size="40" maxlength="20">
+      </div>
+      <div id = "player_02">
+        <a>プレイヤー　２：</a>
+        <input type="text" id="player_name_02" size="40" maxlength="20">
+      </div>
+      <div id = "player_03">
+        <a>プレイヤー　３：</a>
+        <input type="text" id="player_name_03" size="40" maxlength="20">
+      </div>
+      <div id = "player_04">
+        <a>プレイヤー　４：</a>
+        <input type="text" id="player_name_04" size="40" maxlength="20">
+      </div>
+      <div id = "player_05">
+        <a>プレイヤー　５：</a>
+        <input type="text" id="player_name_05" size="40" maxlength="20">
+      </div>
+      <div id = "player_06">
+        <a>プレイヤー　６：</a>
+        <input type="text" id="player_name_06" size="40" maxlength="20">
+      </div>
+      <div id = "player_07">
+        <a>プレイヤー　７：</a>
+        <input type="text" id="player_name_07" size="40" maxlength="20">
+      </div>
+      <div id = "player_08">
+        <a>プレイヤー　８：</a>
+        <input type="text" id="player_name_08" size="40" maxlength="20">
+      </div>
+      <div id = "player_09">
+        <a>プレイヤー　９：</a>
+        <input type="text" id="player_name_09" size="40" maxlength="20">
+      </div>
+      <div id = "player_10">
+        <a>プレイヤー１０：</a>
+        <input type="text" id="player_name_10" size="40" maxlength="20">
+      </div>
+      <div id = "player_11">
+        <a>プレイヤー１１：</a>
+        <input type="text" id="player_name_11" size="40" maxlength="20">
+      </div>
+      <div id = "player_12">
+        <a>プレイヤー１２：</a>
+        <input type="text" id="player_name_12" size="40" maxlength="20">
+      </div>
+      <div id = "player_13">
+        <a>プレイヤー１３：</a>
+        <input type="text" id="player_name_13" size="40" maxlength="20">
+      </div>
+      <div id = "player_14">
+        <a>プレイヤー１４：</a>
+        <input type="text" id="player_name_14" size="40" maxlength="20">
+      </div>
+      <div id = "player_15">
+        <a>プレイヤー１５：</a>
+        <input type="text" id="player_name_15" size="40" maxlength="20">
+      </div>
+      <input type="button" value="マッチング作成" onclick="MakeMatchTable()"/>
+    </div>
+    <div id="result" style="display:none">
+      <br>
+      <table border="1">
+        <thead>
+          <tr>
+            <th id="coat_header">コート番号</th>
+            <th id="coat_1">1番コート</th>
+            <th id="coat_2">2番コート</th>
+            <th id="coat_3">3番コート</th>
+            <th id="coat_4">4番コート</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="match_1">
+            <td id="match_1_title">第１試合</td>
+            <td id="match_1_coat_1">1</td>
+            <td id="match_1_coat_2">2</td>
+            <td id="match_1_coat_3">3</td>
+            <td id="match_1_coat_4">4</td>
+          </tr>
+          <tr id="match_2">
+            <td id="match_2_title">第２試合</td>
+            <td id="match_2_coat_1">1</td>
+            <td id="match_2_coat_2">2</td>
+            <td id="match_2_coat_3">3</td>
+            <td id="match_2_coat_4">4</td>
+          </tr>
+          <tr id="match_3">
+            <td id="match_3_title">第３試合</td>
+            <td id="match_3_coat_1">1</td>
+            <td id="match_3_coat_2">2</td>
+            <td id="match_3_coat_3">3</td>
+            <td id="match_3_coat_4">4</td>
+          </tr>
+          <tr id="match_4">
+            <td id="match_4_title">第４試合</td>
+            <td id="match_4_coat_1">1</td>
+            <td id="match_4_coat_2">2</td>
+            <td id="match_4_coat_3">3</td>
+            <td id="match_4_coat_4">4</td>
+          </tr>
+          <tr id="match_5">
+            <td id="match_5_title">第５試合</td>
+            <td id="match_5_coat_1">1</td>
+            <td id="match_5_coat_2">2</td>
+            <td id="match_5_coat_3">3</td>
+            <td id="match_5_coat_4">4</td>
+          </tr>
+          <tr id="match_6">
+            <td id="match_6_title">第６試合</td>
+            <td id="match_6_coat_1">1</td>
+            <td id="match_6_coat_2">2</td>
+            <td id="match_6_coat_3">3</td>
+            <td id="match_6_coat_4">4</td>
+          </tr>
+          <tr id="match_7">
+            <td id="match_7_title">第７試合</td>
+            <td id="match_7_coat_1">1</td>
+            <td id="match_7_coat_2">2</td>
+            <td id="match_7_coat_3">3</td>
+            <td id="match_7_coat_4">4</td>
+          </tr>
+          <tr id="match_8">
+            <td id="match_8_title">第８試合</td>
+            <td id="match_8_coat_1">1</td>
+            <td id="match_8_coat_2">2</td>
+            <td id="match_8_coat_3">3</td>
+            <td id="match_8_coat_4">4</td>
+          </tr>
+          <tr id="match_9">
+            <td id="match_9_title">第９試合</td>
+            <td id="match_9_coat_1">1</td>
+            <td id="match_9_coat_2">2</td>
+            <td id="match_9_coat_3">3</td>
+            <td id="match_9_coat_4">4</td>
+          </tr>
+          <tr id="match_10">
+            <td id="match_10_title">第１０試合</td>
+            <td id="match_10_coat_1">1</td>
+            <td id="match_10_coat_2">2</td>
+            <td id="match_10_coat_3">3</td>
+            <td id="match_10_coat_4">4</td>
+          </tr>
+          <tr id="match_11">
+            <td id="match_11_title">第１１試合</td>
+            <td id="match_11_coat_1">1</td>
+            <td id="match_11_coat_2">2</td>
+            <td id="match_11_coat_3">3</td>
+            <td id="match_11_coat_4">4</td>
+          </tr>
+          <tr id="match_12">
+            <td id="match_12_title">第１２試合</td>
+            <td id="match_12_coat_1">1</td>
+            <td id="match_12_coat_2">2</td>
+            <td id="match_12_coat_3">3</td>
+            <td id="match_12_coat_4">4</td>
+          </tr>
+          <tr id="match_13">
+            <td id="match_13_title">第１３試合</td>
+            <td id="match_13_coat_1">1</td>
+            <td id="match_13_coat_2">2</td>
+            <td id="match_13_coat_3">3</td>
+            <td id="match_13_coat_4">4</td>
+          </tr>
+          <tr id="match_14">
+            <td id="match_14_title">第１４試合</td>
+            <td id="match_14_coat_1">1</td>
+            <td id="match_14_coat_2">2</td>
+            <td id="match_14_coat_3">3</td>
+            <td id="match_14_coat_4">4</td>
+          </tr>
+          <tr id="match_15">
+            <td id="match_15_title">第１５試合</td>
+            <td id="match_15_coat_1">1</td>
+            <td id="match_15_coat_2">2</td>
+            <td id="match_15_coat_3">3</td>
+            <td id="match_15_coat_4">4</td>
+          </tr>
+          <tr id="match_16">
+            <td id="match_16_title">第１６試合</td>
+            <td id="match_16_coat_1">1</td>
+            <td id="match_16_coat_2">2</td>
+            <td id="match_16_coat_3">3</td>
+            <td id="match_16_coat_4">4</td>
+          </tr>
+          <tr id="match_17">
+            <td id="match_17_title">第１７試合</td>
+            <td id="match_17_coat_1">1</td>
+            <td id="match_17_coat_2">2</td>
+            <td id="match_17_coat_3">3</td>
+            <td id="match_17_coat_4">4</td>
+          </tr>
+          <tr id="match_18">
+            <td id="match_18_title">第１８試合</td>
+            <td id="match_18_coat_1">1</td>
+            <td id="match_18_coat_2">2</td>
+            <td id="match_18_coat_3">3</td>
+            <td id="match_18_coat_4">4</td>
+          </tr>
+          <tr id="match_19">
+            <td id="match_19_title">第１９試合</td>
+            <td id="match_19_coat_1">1</td>
+            <td id="match_19_coat_2">2</td>
+            <td id="match_19_coat_3">3</td>
+            <td id="match_19_coat_4">4</td>
+          </tr>
+          <tr id="match_20">
+            <td id="match_20_title">第２０試合</td>
+            <td id="match_20_coat_1">1</td>
+            <td id="match_20_coat_2">2</td>
+            <td id="match_20_coat_3">3</td>
+            <td id="match_20_coat_4">4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
